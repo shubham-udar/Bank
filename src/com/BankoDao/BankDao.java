@@ -2,6 +2,7 @@ package com.BankoDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
@@ -94,7 +95,7 @@ public class BankDao {
 	} */
 	
 	
-	public void deleteAccountDetails()
+/*	public void deleteAccountDetails()
 	{
 		
 		try
@@ -106,6 +107,30 @@ public class BankDao {
 	     
 	     System.out.println("Account details Deleted SucessFully...");
 	     
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}  */
+	
+	
+	public void showAccountDatails()
+	{
+		
+		try
+		{
+	      PreparedStatement  statement  = con.prepareStatement("select * from createAccount");
+	      
+	       ResultSet rs =statement.executeQuery();
+	       
+	       
+	       while(rs.next())
+	       {
+	    	   System.out.println("Account Holder Name     : "+rs.getString("AccountHolderName"));
+	    	   
+	    	   System.out.println("Account Holder Address  : "+rs.getString("AccountHolderAddress"));
+	       }
+	  
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -136,7 +161,10 @@ public class BankDao {
 //		dao.updateAccountDetails();
 		
 		
-		dao.deleteAccountDetails();
+//		dao.deleteAccountDetails();
+		
+		
+		dao.showAccountDatails();
 		
 	}
 	
